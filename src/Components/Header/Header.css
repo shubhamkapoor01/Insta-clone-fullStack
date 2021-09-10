@@ -1,0 +1,41 @@
+* {
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 1px solid #bababa;
+}
+
+.header__right {
+	margin: 8px;
+	padding: 8px;
+}
+
+.header__logo {
+	color: black;
+	text-decoration: none;
+	margin: 8px;
+	margin-left: 16px;
+	padding: 8px;
+	font-weight: 600;
+}
+
+.header__home {
+	color: black;
+	text-decoration: none;
+	padding: 8px;
+	margin: 8px;
+	font-weight: 600;
+}
+
+.header__myProfile {
+	color: black;
+	text-decoration: none;
+	padding: 8px;
+	margin: 8px;
+	font-weight: 600;
+}
