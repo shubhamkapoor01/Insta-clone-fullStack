@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import './Posts.css'
-import { Context } from '../../../Store'
+import { useStateValue } from '../../../StateProvider'
 
 function Posts() {
-	const [posts, setPosts] = useContext(Context);
+	const [{ posts }, dispatch] = useStateValue();
 	
 	return (
 		<div className="posts">

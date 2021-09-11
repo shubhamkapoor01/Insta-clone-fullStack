@@ -2,10 +2,11 @@ import React, { useState, useContext } from 'react'
 import './AddPost.css'
 import Popup from 'reactjs-popup'
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined'
-import { Context } from '../../../Store'
+import { useStateValue } from '../../../StateProvider'
+import { actionTypes } from '../../../reducer'
 
 function AddPost() {
-	const [posts, setPosts] = useContext(Context);
+	const [{ posts }, dispatch] = useStateValue();
 	const [image, setImage] = useState("");
 	const [caption, setCaption] = useState("");
 
@@ -16,7 +17,10 @@ function AddPost() {
 			return;
 		}
 		var newPost = { id: new Date().getTime().toString(), image: image, caption: caption, comments: [] };
-		setPosts([...posts, newPost]);
+		dispatch({
+			type: actionTypes.ADD_POST,
+			posts: [...posts, newPost],
+		});
 		return;
 	}
 

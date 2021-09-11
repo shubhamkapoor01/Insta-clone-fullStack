@@ -7,18 +7,21 @@
 .post {
 	display: flex;
 	flex-direction: column;
+	margin: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	margin-left: auto;
 	margin-right: auto;
 	align-items: center;
+	background-color: white;
+	border: 1px solid #bababa;
+	width: 80%;
+	text-decoration: none;
 }
 
 .post__image {
 	margin-left: auto;
 	margin-right: auto;
-	width: 75%;
+	width: 100%;
 	height: auto;
-}
-
-.post__caption {
-
 }
