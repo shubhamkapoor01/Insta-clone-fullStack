@@ -26,6 +26,8 @@ function Body() {
 				type: actionTypes.ADD_USER,
 				users: data.docs.map(doc => doc.data()), 
 			})
+		}
+		const addUser = async () => {
 			var newUser = { 
 				name: user.displayName,
 				email: user.email,
@@ -44,10 +46,11 @@ function Body() {
 				type: actionTypes.ADD_USER,
 				users: [...users, newUser],
 			});
-			}
+		}
 
 		fetchPosts();
 		fetchUsers();
+		addUser();
 	}, []);
 
 	return (
