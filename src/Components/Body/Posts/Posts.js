@@ -1,16 +1,18 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './Posts.css'
 import { useStateValue } from '../../../StateProvider'
 
 function Posts() {
 	const [{ posts }, dispatch] = useStateValue();
-	
+
 	return (
 		<div className="posts">
 			{ posts.map((post) => {
-				console.log(post);
 				return (
-					<a className="post" href="." key={ post.id }>
+					<div className="post" key={ post.id }>
+						<p className="post__author">
+							{ post.authorName }
+						</p>
 						<img className="post__image" 
 							src={ post.image } 
 							alt="Could not load.. refresh to retry.">
@@ -18,7 +20,7 @@ function Posts() {
 						<p className="post__caption">
 							{ post.caption }
 						</p>
-					</a>
+					</div>
 				)
 			})}
 		</div>

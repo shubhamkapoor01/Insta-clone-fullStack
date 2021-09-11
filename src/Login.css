@@ -6,6 +6,10 @@
 	background-color: #e0e0e0;
 }
 
+.login__text {
+	font-size: 32px;
+}
+
 .login__container {
 	padding: 100px;
 	text-align: center;
@@ -16,6 +20,7 @@
 
 .login__container > button {
 	margin-top: 50px;
+	font-size: 32px;
 	text-transform: inherit;
 	background-color: grey;
 	color: white;

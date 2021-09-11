@@ -1,6 +1,9 @@
+import db from './Firebase/firebase'
+
 export const initialState = {
 	user: null,
 	posts: [],
+	users: [],
 };
 
 export const actionTypes = {
@@ -9,7 +12,6 @@ export const actionTypes = {
 };
 
 const reducer = (state, action) => {
-	console.log(action);
 	switch(action.type) {
 		case actionTypes.SET_USER:
 			return {
@@ -22,6 +24,12 @@ const reducer = (state, action) => {
 				...state,
 				posts: action.posts,
 			}
+
+			case actionTypes.ADD_USER:
+				return {
+					...state,
+					users: action.users,
+				}
 
 		default:
 			return state;

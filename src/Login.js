@@ -26,9 +26,9 @@ function Login() {
 		<div className="login">
 			<div className="login__container">
 				<div className="login__text">
-					<h1> Sign in to Instagram </h1>
+					Log In to Instagram 
 				</div>
-				<Button onClick={ () => signIn(provider) }>
+				<Button className="login__button" onClick={ () => signIn(provider) }>
 					Sign In With Google
 				</Button>
 			</div>

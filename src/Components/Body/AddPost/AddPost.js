@@ -4,8 +4,10 @@ import Popup from 'reactjs-popup'
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined'
 import { useStateValue } from '../../../StateProvider'
 import { actionTypes } from '../../../reducer'
+import db from '../../../Firebase/firebase'
 
 function AddPost() {
+	const [{ user }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
 	const [image, setImage] = useState("");
 	const [caption, setCaption] = useState("");
@@ -16,7 +18,22 @@ function AddPost() {
 			alert("Please add an image to post!");
 			return;
 		}
-		var newPost = { id: new Date().getTime().toString(), image: image, caption: caption, comments: [] };
+		var newPost = { 
+			id: new Date().getTime().toString(), 
+			authorName: user.displayName,
+			authorEmail: user.email,
+			image: image, 
+			caption: caption, 
+			comments: [],
+		};
+		db.collection("posts").doc(newPost.id).set({
+			id: newPost.id,
+			authorName: newPost.authorName,
+			authorEmail: newPost.authorEmail,
+			image: newPost.image,
+			caption: newPost.caption,
+			comments: newPost.comments,
+		});
 		dispatch({
 			type: actionTypes.ADD_POST,
 			posts: [...posts, newPost],
