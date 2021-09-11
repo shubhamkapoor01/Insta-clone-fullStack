@@ -28,6 +28,9 @@ function Body() {
 			})
 		}
 		const addUser = async () => {
+			if (db.collection("users").doc(user.email).exists) {
+				return;
+			}
 			var newUser = { 
 				name: user.displayName,
 				email: user.email,
@@ -35,7 +38,7 @@ function Body() {
 				followed: [],
 				liked: [],
 			};
-			db.collection("users").doc().set({
+			db.collection("users").doc(user.email).set({
 				name: newUser.name,
 				email: newUser.email,
 				messaged: newUser.messaged, 
