@@ -23,16 +23,20 @@ function AddPost() {
 			authorName: user.displayName,
 			authorEmail: user.email,
 			image: image, 
+			likes: 0,
 			caption: caption, 
 			comments: [],
+			likedBy: [],
 		};
 		db.collection("posts").doc(newPost.id).set({
 			id: newPost.id,
 			authorName: newPost.authorName,
 			authorEmail: newPost.authorEmail,
+			likes: newPost.likes,
 			image: newPost.image,
 			caption: newPost.caption,
 			comments: newPost.comments,
+			likedBy: newPost.likedBy,
 		});
 		dispatch({
 			type: actionTypes.ADD_POST,
