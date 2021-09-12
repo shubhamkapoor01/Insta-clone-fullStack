@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import './AddPost.css'
 import Popup from 'reactjs-popup'
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined'
@@ -8,6 +8,7 @@ import db from '../../../Firebase/firebase'
 
 function AddPost() {
 	const [{ user }] = useStateValue();
+	const [{ users }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
 	const [image, setImage] = useState("");
 	const [caption, setCaption] = useState("");

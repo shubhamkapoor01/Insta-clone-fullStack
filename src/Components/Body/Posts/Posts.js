@@ -7,7 +7,6 @@ import Popup from 'reactjs-popup'
 
 function Posts() {
 	const [{ user }] = useStateValue();
-	const [{ users }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
 	const [userComment, setUserComment] = useState("");
 
