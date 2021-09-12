@@ -37,6 +37,7 @@ function Body() {
 				messaged: [], 
 				followed: [],
 				liked: [],
+				posted: [],
 			};
 			db.collection("users").doc(user.email).set({
 				name: newUser.name,
@@ -44,6 +45,7 @@ function Body() {
 				messaged: newUser.messaged, 
 				followed: newUser.followed,
 				liked: newUser.liked,
+				posted: [],
 			});
 			dispatch({
 				type: actionTypes.ADD_USER,

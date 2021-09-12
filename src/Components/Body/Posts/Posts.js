@@ -2,44 +2,77 @@ import React, { useState } from 'react'
 import './Posts.css'
 import { useStateValue } from '../../../StateProvider'
 import db from '../../../Firebase/firebase'
-import { render } from '@testing-library/react';
+import { actionTypes } from '../../../reducer'
+import Popup from 'reactjs-popup'
 
 function Posts() {
 	const [{ user }] = useStateValue();
 	const [{ users }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
+	const [userComment, setUserComment] = useState("");
 
 	const addLike = async (post) => {
-		if (post.likedBy.includes(user.email)) {
-			const idx = post.likedBy.indexOf(user.email)
-			post.likedBy.splice(idx, 1);
-			post.likes --;
-			db.collection("posts").doc(post.id).set({
-				id: post.id,
-				authorName: post.authorName,
-				authorEmail: post.authorEmail,
-				likes: post.likes,
-				image: post.image,
-				caption: post.caption,
-				comments: post.comments,
-				likedBy: post.likedBy,
-			});
+		let tempPost = post;
+		let idx = posts.findIndex(curr => (curr.id === post.id));
+		posts.splice(idx, 1);
+		if (tempPost.likedBy.includes(user.email)) {
+			const idx = tempPost.likedBy.indexOf(user.email)
+			tempPost.likedBy.splice(idx, 1);
+			tempPost.likes --;
+			db.collection("posts").doc(tempPost.id).set({
+				id: tempPost.id,
+				authorName: tempPost.authorName,
+				authorEmail: tempPost.authorEmail,
+				likes: tempPost.likes,
+				image: tempPost.image,
+				caption: tempPost.caption,
+				comments: tempPost.comments,
+				likedBy: tempPost.likedBy,
+			});	
 		} else {
-			post.likes ++;
-			post.likedBy = [...post.likedBy, user.email];
-			db.collection("posts").doc(post.id).set({
-				id: post.id,
-				authorName: post.authorName,
-				authorEmail: post.authorEmail,
-				likes: post.likes,
-				image: post.image,
-				caption: post.caption,
-				comments: post.comments,
-				likedBy: post.likedBy,
+			tempPost.likes ++;
+			tempPost.likedBy = [...tempPost.likedBy, user.email];
+			db.collection("posts").doc(tempPost.id).set({
+				id: tempPost.id,
+				authorName: tempPost.authorName,
+				authorEmail: tempPost.authorEmail,
+				likes: tempPost.likes,
+				image: tempPost.image,
+				caption: tempPost.caption,
+				comments: tempPost.comments,
+				likedBy: tempPost.likedBy,
 			});
 		}
-		render();
+		posts.splice(idx, 0, tempPost);
+		dispatch({
+			type: actionTypes.ADD_POST,
+			posts: posts,
+		})
 		return;
+	}
+
+	const addComment = (e, post) => {
+		e.preventDefault();
+		let tempPost = post;
+		let idx = posts.findIndex((curr => (curr.id === post.id)));
+		posts.splice(idx, 1);
+		tempPost.comments.push(userComment);
+		db.collection("posts").doc(tempPost.id).set({
+			id: tempPost.id,
+			authorName: tempPost.authorName,
+			authorEmail: tempPost.authorEmail,
+			likes: tempPost.likes,
+			image: tempPost.image,
+			caption: tempPost.caption,
+			comments: tempPost.comments,
+			likedBy: tempPost.likedBy,
+		});
+		setUserComment("");
+		posts.splice(idx, 0, tempPost);
+		dispatch({
+			type: actionTypes.ADD_POST,
+			posts: posts,
+		})
 	}
 
 	return (
@@ -59,9 +92,24 @@ function Posts() {
 								{ post.caption }
 							</div>
 							<div className="button__div"> 
-								<button className="post__likes" onClick={ (e) => addLike(post) }>
+								<button onClick={ (e) => addLike(post) }>
 									Likes: { post.likes }
 								</button>
+								<Popup trigger={
+									<button>
+										Comment
+									</button>
+								} position="bottom right" >
+									<div className="comment__form">
+										<input className="comment__value"
+											placeholder="Add Comment Here..."
+											onChange={ (e) => setUserComment(e.target.value) }
+										/>
+										<button className="comment__button" onClick={ (e) => addComment(e, post) }>
+											Post
+										</button>
+									</div>
+								</Popup>
 							</div>
 						</div>
 					</div>

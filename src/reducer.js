@@ -25,11 +25,11 @@ const reducer = (state, action) => {
 				posts: action.posts,
 			}
 
-			case actionTypes.ADD_USER:
-				return {
-					...state,
-					users: action.users,
-				}
+		case actionTypes.ADD_USER:
+			return {
+				...state,
+				users: action.users,
+			}
 
 		default:
 			return state;
