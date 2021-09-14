@@ -56,6 +56,10 @@ function Header() {
 		addUser();
 	}, [])
 
+	const visitUser = (userEmail) => {
+		window.open(`/${ userEmail }`, "_self")
+	}
+
 	return (
 		<div className="header">
 			<a className="header__logo" href=".">
@@ -66,15 +70,15 @@ function Header() {
 					placeholder="Search for someone..."
 					onChange={ (e) => setSearching(e.target.value) }
 				/>
-			} position="bottom center" >
+			} position="bottom center" closeOnDocumentClick>
 				<div className="search__popup">
 					{ 
 						users.map((user) => {
 							return(
 								user.name.toLowerCase().includes(searching.toLocaleLowerCase()) ? (
-									<div className="search__result">
-										{ user.name }
-									</div>
+										<div className="search__result" onClick={ (e) => visitUser(user.email) }>
+											{ user.name }
+										</div>
 								) : (
 									<div></div>
 								)
@@ -87,7 +91,7 @@ function Header() {
 				<a className="header__home" href=".">
 					Home
 				</a>
-				<a className="header__myProfile" href={`/${user.displayName}`}>
+				<a className="header__myProfile" href={`/${user.email}`}>
 					My Profile
 				</a>	
 			</div>

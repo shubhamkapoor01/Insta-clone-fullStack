@@ -65,7 +65,7 @@ function Body() {
 				<AddPost />
 				<Switch>              
 					<Route exact path="/" component={ Posts } />
-  				<Route exact path={`/${user.displayName}`} component={ MyPosts } />
+  				<Route exact path={`/${ user.email }`} component={ MyPosts } />
    	  	</Switch>
 			</BrowserRouter>
 		</div>

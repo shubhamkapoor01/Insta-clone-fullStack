@@ -62,7 +62,15 @@
 	border: 1px solid #bababa;
 }
 
+.search__link {
+	color: black;
+	outline: none;
+	text-decoration: none;
+}
+
 .search__result {
+	color: black;
+	text-decoration: none;
 	text-align: center;
 	margin: 4px;	
 	padding: 4px; 
