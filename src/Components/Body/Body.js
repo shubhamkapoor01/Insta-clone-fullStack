@@ -5,13 +5,14 @@ import Posts from './Posts/Posts'
 import { useStateValue } from '../../StateProvider'
 import { actionTypes } from '../../reducer'
 import db from '../../Firebase/firebase'
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import MyPosts from './MyPosts/MyPosts'
 
 function Body() {
 	const [{ user }] = useStateValue();
 	const [{ users }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
-
+	
 	useEffect(() => {
 		const fetchPosts = async () => {
 			const data = await db.collection('posts').get();
@@ -45,7 +46,7 @@ function Body() {
 				messaged: newUser.messaged, 
 				followed: newUser.followed,
 				liked: newUser.liked,
-				posted: [],
+				posted: newUser.posted,
 			});
 			dispatch({
 				type: actionTypes.ADD_USER,
@@ -60,8 +61,13 @@ function Body() {
 
 	return (
 		<div className="body">
-			<AddPost />
-			<Posts />
+			<BrowserRouter>
+				<AddPost />
+				<Switch>              
+					<Route exact path="/" component={ Posts } />
+  				<Route exact path={`/${user.displayName}`} component={ MyPosts } />
+   	  	</Switch>
+			</BrowserRouter>
 		</div>
 	)
 }

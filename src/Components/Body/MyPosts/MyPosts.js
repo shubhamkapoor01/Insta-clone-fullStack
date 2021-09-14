@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import './Posts.css'
+import './MyPosts.css'
 import { useStateValue } from '../../../StateProvider'
 import db from '../../../Firebase/firebase'
 import { actionTypes } from '../../../reducer'
 import Popup from 'reactjs-popup'
 
-function Posts() {
+function MyPosts() {
 	const [{ user }] = useStateValue();
+	const [{ users }] = useStateValue();
 	const [{ clicked }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
 	const [userComment, setUserComment] = useState("");
@@ -53,13 +54,10 @@ function Posts() {
 
 	const addComment = (e, post) => {
 		e.preventDefault();
-		if (userComment == "") {
-			alert("Please enter a valid comment")
-		}
 		let tempPost = post;
 		let idx = posts.findIndex((curr => (curr.id === post.id)));
 		posts.splice(idx, 1);
-		tempPost.comments.push({ sender: post.authorName , value: userComment });
+		tempPost.comments.push(userComment);
 		db.collection("posts").doc(tempPost.id).set({
 			id: tempPost.id,
 			authorName: tempPost.authorName,
@@ -70,26 +68,38 @@ function Posts() {
 			comments: tempPost.comments,
 			likedBy: tempPost.likedBy,
 		});
+		setUserComment("");
 		posts.splice(idx, 0, tempPost);
 		dispatch({
 			type: actionTypes.ADD_POST,
 			posts: posts,
 		})
-		setUserComment("");
+	}
+
+	const setClicked = (post) => {
+		dispatch({ 
+			type: actionTypes.SET_CLICKED,
+			clicked: post,
+		})
+		console.log("setting clicked", post);
 	}
 
 	return (
 		<div className="posts">
-			{ posts.map((post) => {
-				return (
-					<div className="post" key={ post.id }>
+			{
+				posts.map((post) => {
+					return (
+					post.authorEmail === user.email ? (
+						<div className="post" key={ post.id }>
 						<p className="post__author">
 							{ post.authorName }
 						</p>
-						<img className="post__image" 
-							src={ post.image } 
-							alt="Could not load.. refresh to retry.">
-						</img>
+						<a className="imagelink" href="/viewpost" onClick={ (e) => setClicked(post) }>
+							<img className="post__image" 
+								src={ post.image } 
+								alt="Could not load.. refresh to retry.">
+							</img>
+						</a>
 						<div className="post__footer">
 							<div className="post__caption">
 								{ post.caption }
@@ -104,20 +114,6 @@ function Posts() {
 									</button>
 								} position="bottom right" >
 									<div className="comment__form">
-										{ 
-											post.comments.map((comment) => {
-												return (
-													<div className="comment">
-														<div className="comment__sender">
-															{ comment.sender }: 
-														</div>
-														<div className="comment__value">
-															{ comment.value }
-														</div>
-													</div>
-												)
-											})
-										}
 										<input className="comment__value"
 											placeholder="Add Comment Here..."
 											onChange={ (e) => setUserComment(e.target.value) }
@@ -130,10 +126,14 @@ function Posts() {
 							</div>
 						</div>
 					</div>
-				)
-			})}
+					) : (
+						<div className="no__posts">
+						</div>
+					)
+				)})
+			}
 		</div>
 	)
 }
 
-export default Posts
+export default MyPosts

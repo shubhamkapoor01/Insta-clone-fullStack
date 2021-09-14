@@ -43,6 +43,23 @@ function AddPost() {
 			type: actionTypes.ADD_POST,
 			posts: [...posts, newPost],
 		});
+		var index = users.findIndex(curr => (curr.email === newPost.authorEmail))
+		var newUser = users[index];
+		users.splice(index, 1);
+		newUser.posted.push(newPost.id);
+		users.splice(index, 0, newUser);
+		dispatch({
+			type: actionTypes.ADD_USER,
+			users: users,
+		})
+		db.collection("users").doc(newUser.email).set({
+			name: newUser.name,
+			email: newUser.email,
+			messaged: newUser.messaged, 
+			followed: newUser.followed,
+			liked: newUser.liked,
+			posted: newUser.posted
+		})
 		return;
 	}
 

@@ -1,0 +1,82 @@
+.posts {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.post {
+	display: flex;
+	flex-direction: column;
+	margin: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+	background-color: white;
+	border: 1px solid #bababa;
+	width: 80%;
+	text-decoration: none;
+	overflow: hidden;
+}
+
+.post__image {
+	width: 100%;
+	height: auto;
+}
+
+.post__footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 100%;
+	width: 100%;
+	padding: 10px;
+}
+
+.post__caption {
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-left: 16px;
+	margin-right: 16px;
+	padding-top: 4px;
+}
+
+.button__div {
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+
+.comment__form {
+	display: flex;
+	flex-direction: column;
+	margin: 8px;
+	margin-top: 0px;
+	padding: 8px;
+	width: 250px;
+	background-color: white;
+	border: 1px solid #bababa
+}
+
+.comment__value {
+	text-align: center;
+	margin: 8px;	
+	outline: none;
+	border-radius: 12px;
+	background-color: whitesmoke;
+	border: 1px solid #bababa;
+}
+
+.comment__button {
+	margin: 8px;
+	margin-bottom: 4px;
+	margin-left: auto; 
+	margin-right: auto;
+	padding-left: 12px;
+	padding-right: 12px;
+	border-radius: 12px;
+	outline: none;
+	border: 1px solid #bababa;
+	background-color: black;
+	color: white
+}

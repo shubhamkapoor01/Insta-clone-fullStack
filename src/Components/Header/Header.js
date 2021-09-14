@@ -1,8 +1,10 @@
 import React from 'react'
 import './Header.css'
-
+import { useStateValue } from '../../StateProvider'
 
 function Header() {
+	const [{ user }] = useStateValue();
+
 	return (
 		<div className="header">
 			<a className="header__logo" href=".">
@@ -12,7 +14,7 @@ function Header() {
 				<a className="header__home" href=".">
 					Home
 				</a>
-				<a className="header__myProfile" href=".">
+				<a className="header__myProfile" href={`/${user.displayName}`}>
 					My Profile
 				</a>	
 			</div>

@@ -1,14 +1,15 @@
-import db from './Firebase/firebase'
-
 export const initialState = {
 	user: null,
 	posts: [],
 	users: [],
+	clicked: {},
 };
 
 export const actionTypes = {
 	SET_USER: "SET_USER",
 	ADD_POST: "ADD_POST",
+	ADD_USER: "ADD_USER",
+	SET_CLICKED: "SET_CLICKED",
 };
 
 const reducer = (state, action) => {
@@ -29,6 +30,12 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				users: action.users,
+			}
+
+		case actionTypes.SET_CLICKED:
+			return {
+				...state,
+				clicked: action.clicked,
 			}
 
 		default:
