@@ -75,7 +75,7 @@ function Header() {
 					{ 
 						users.map((user) => {
 							return(
-								user.name.toLowerCase().includes(searching.toLocaleLowerCase()) ? (
+								user.name.toLowerCase().startsWith(searching.toLocaleLowerCase()) ? (
 										<div className="search__result" onClick={ (e) => visitUser(user.email) }>
 											{ user.name }
 										</div>
