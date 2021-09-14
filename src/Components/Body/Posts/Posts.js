@@ -59,7 +59,7 @@ function Posts() {
 		let tempPost = post;
 		let idx = posts.findIndex((curr => (curr.id === post.id)));
 		posts.splice(idx, 1);
-		tempPost.comments.push({ sender: user.name , value: userComment });
+		tempPost.comments.push({ sender: user.displayName , value: userComment });
 		db.collection("posts").doc(tempPost.id).set({
 			id: tempPost.id,
 			authorName: tempPost.authorName,
