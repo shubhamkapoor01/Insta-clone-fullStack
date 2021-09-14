@@ -50,3 +50,24 @@
 	height: 30px;
 	width: 50%;
 }
+
+.search__popup {
+	display: flex;
+	flex-direction: column;
+	margin: 8px;
+	margin-top: 0px;
+	padding: 8px;
+	width: 250px;
+	background-color: white;
+	border: 1px solid #bababa;
+}
+
+.search__result {
+	text-align: center;
+	margin: 4px;	
+	padding: 4px; 
+	outline: none;
+	border-radius: 8px;
+	background-color: whitesmoke;
+	border: 1px solid #bababa	
+}

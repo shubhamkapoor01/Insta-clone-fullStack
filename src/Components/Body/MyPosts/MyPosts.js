@@ -94,12 +94,10 @@ function MyPosts() {
 						<p className="post__author">
 							{ post.authorName }
 						</p>
-						<a className="imagelink" href="/viewpost" onClick={ (e) => setClicked(post) }>
-							<img className="post__image" 
-								src={ post.image } 
-								alt="Could not load.. refresh to retry.">
-							</img>
-						</a>
+						<img className="post__image" 
+							src={ post.image } 
+							alt="Could not load.. refresh to retry.">
+						</img>
 						<div className="post__footer">
 							<div className="post__caption">
 								{ post.caption }
@@ -114,6 +112,20 @@ function MyPosts() {
 									</button>
 								} position="bottom right" >
 									<div className="comment__form">
+										{ 
+											post.comments.map((comment) => {
+												return (
+													<div className="comment">
+														<div className="comment__sender">
+															{ comment.sender }: 
+														</div>
+														<div className="comment__value">
+															{ comment.value }
+														</div>
+													</div>
+												)
+											})
+										}
 										<input className="comment__value"
 											placeholder="Add Comment Here..."
 											onChange={ (e) => setUserComment(e.target.value) }

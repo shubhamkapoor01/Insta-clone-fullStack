@@ -53,7 +53,7 @@ function Posts() {
 
 	const addComment = (e, post) => {
 		e.preventDefault();
-		if (userComment == "") {
+		if (userComment === "") {
 			alert("Please enter a valid comment")
 		}
 		let tempPost = post;
