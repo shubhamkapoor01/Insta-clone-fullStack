@@ -10,6 +10,9 @@ function Header() {
 			<a className="header__logo" href=".">
 				Instagram
 			</a>
+			<input className="header__searchbar" 
+				placeholder="Search for someone..."
+			/>
 			<div className="header__right">
 				<a className="header__home" href=".">
 					Home

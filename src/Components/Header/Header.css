@@ -39,3 +39,14 @@
 	margin: 8px;
 	font-weight: 600;
 }
+
+.header__searchbar {
+	outline: none;
+	text-align: center;
+	margin-top: auto;
+	border: 1px solid #bababa;
+	margin-bottom: auto;
+	border-radius: 16px;
+	height: 30px;
+	width: 50%;
+}
