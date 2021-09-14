@@ -56,6 +56,7 @@ function MyPosts() {
 		e.preventDefault();
 		if (userComment === "") {
 			alert("Please enter a valid comment")
+			return;
 		}
 		let tempPost = post;
 		let idx = posts.findIndex((curr => (curr.id === post.id)));
@@ -72,6 +73,7 @@ function MyPosts() {
 			likedBy: tempPost.likedBy,
 		});
 		setUserComment("");
+		e.target.value = "";
 		posts.splice(idx, 0, tempPost);
 		dispatch({
 			type: actionTypes.ADD_POST,

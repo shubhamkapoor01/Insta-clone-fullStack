@@ -55,6 +55,7 @@ function Posts() {
 		e.preventDefault();
 		if (userComment === "") {
 			alert("Please enter a valid comment")
+			return;
 		}
 		let tempPost = post;
 		let idx = posts.findIndex((curr => (curr.id === post.id)));
@@ -76,6 +77,7 @@ function Posts() {
 			posts: posts,
 		})
 		setUserComment("");
+		e.target.value = "";
 	}
 
 	return (
