@@ -80,14 +80,22 @@ function Posts() {
 		e.target.value = "";
 	}
 
+	const setClicked = (clickedEmail) => {
+		console.log(clickedEmail)
+		dispatch({
+			type: actionTypes.SET_CLICKED,
+			clicked: clickedEmail,
+		})
+	}
+
 	return (
 		<div className="posts">
 			{ posts.map((post) => {
 				return (
 					<div className="post" key={ post.id }>
-						<p className="post__author">
+						<a className="post__author" href={`/${ post.authorEmail }`} onClick={ (e) => setClicked(post.authorEmail) }>
 							{ post.authorName }
-						</p>
+						</a>
 						<img className="post__image" 
 							src={ post.image } 
 							alt="Could not load.. refresh to retry.">
