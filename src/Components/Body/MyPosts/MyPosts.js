@@ -189,18 +189,10 @@ function MyPosts() {
 								</div>
 								<div className="profile__down">
 									<div className="profile__info">
-										{ current.following.indexOf("") > -1 ? (
-												current.following.length - 1
-											) : (
-												current.following.length
-											)} Following 
+										{ current.following.length - 1 } Following 
 										</div>
 									<div className="profile__info">
-										{ current.followers.indexOf("") > -1 ? (
-											current.followers.length - 1
-										) : (
-											current.followers.length
-										)} Followers
+										{ current.followers.length - 1 } Followers
 									</div>
 								</div>
 							</div>
