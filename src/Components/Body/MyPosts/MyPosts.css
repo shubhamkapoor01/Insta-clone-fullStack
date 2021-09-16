@@ -4,6 +4,71 @@
 	justify-content: space-between;
 }
 
+.profile {
+	display: flex;
+	flex-direction: row;
+	max-width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.profile__name {
+	font-weight: 700;
+	padding: 10px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 16px;
+}
+
+.profile__down {
+	display: flex;
+	flex-direction: row;
+}
+
+.follow__button {
+	color: white;
+	margin: 20px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: rgb(0, 90, 255);
+	outline: none;
+	border-radius: 12px;
+	border: 1px solid #bababa
+}
+
+.post__author {
+	outline: none;
+	text-decoration: none;
+	padding: 10px;
+	margin: 4px;
+	color: black;
+}
+
+.profile__right {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile__pic {
+	height: 100px;
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 12px;
+	margin-top: 4px;
+	border-radius: 50px;
+}
+
+.profile__info {
+	font-weight: 700;
+	padding: 4px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 20px;
+}
+
 .post {
 	display: flex;
 	flex-direction: column;

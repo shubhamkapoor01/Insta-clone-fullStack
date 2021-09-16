@@ -11,6 +11,7 @@ import MyPosts from './MyPosts/MyPosts'
 function Body() {
 	const [{ user }] = useStateValue();
 	const [{ users }] = useStateValue();
+	const [{ clicked }] = useStateValue();
 	const [{ posts }, dispatch] = useStateValue();
 	
 	useEffect(() => {
@@ -36,17 +37,21 @@ function Body() {
 				name: user.displayName,
 				email: user.email,
 				messaged: [], 
-				followed: [],
+				following: [],
+				followers: [],
 				liked: [],
 				posted: [],
+				profilePicture: "https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png",
 			};
 			db.collection("users").doc(user.email).set({
 				name: newUser.name,
 				email: newUser.email,
 				messaged: newUser.messaged, 
-				followed: newUser.followed,
+				following: newUser.following,
+				followers: newUser.followers,
 				liked: newUser.liked,
 				posted: newUser.posted,
+				profilePicture: newUser.profilePicture,
 			});
 			dispatch({
 				type: actionTypes.ADD_USER,
@@ -66,6 +71,7 @@ function Body() {
 				<Switch>              
 					<Route exact path="/" component={ Posts } />
   				<Route exact path={`/${ user.email }`} component={ MyPosts } />
+					<Route path="/" component={ MyPosts } />
    	  	</Switch>
 			</BrowserRouter>
 		</div>

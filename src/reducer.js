@@ -2,7 +2,7 @@ export const initialState = {
 	user: null,
 	posts: [],
 	users: [],
-	clicked: {},
+	clicked: "",
 };
 
 export const actionTypes = {

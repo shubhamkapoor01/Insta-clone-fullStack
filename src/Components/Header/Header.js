@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup'
 
 function Header() {
 	const [{ user }] = useStateValue();
+	const [{ clicked }] = useStateValue();
 	const [{ users }, dispatch] = useStateValue();
 	const [searching, setSearching] = useState("");
 
@@ -56,9 +57,15 @@ function Header() {
 		addUser();
 	}, [])
 
-	const visitUser = (userEmail) => {
-		window.open(`/${ userEmail }`, "_self")
+	const visitUser = (clickedEmail) => {
+		dispatch({
+			type: actionTypes.SET_CLICKED,
+			clicked: clickedEmail,
+		})
+		window.open(`/${ clickedEmail }`, "_self")
 	}
+
+
 
 	return (
 		<div className="header">
