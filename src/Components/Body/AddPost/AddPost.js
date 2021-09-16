@@ -56,7 +56,8 @@ function AddPost() {
 			name: newUser.name,
 			email: newUser.email,
 			messaged: newUser.messaged, 
-			followed: newUser.followed,
+			following: newUser.following,
+			followers: newUser.followers,
 			liked: newUser.liked,
 			posted: newUser.posted
 		})

@@ -27,29 +27,37 @@ function Header() {
 			})
 		}
 		const addUser = async () => {
-			if (db.collection("users").doc(user.email).exists) {
-				return;
-			}
-			var newUser = { 
-				name: user.displayName,
-				email: user.email,
-				messaged: [], 
-				followed: [],
-				liked: [],
-				posted: [],
-			};
-			db.collection("users").doc(user.email).set({
-				name: newUser.name,
-				email: newUser.email,
-				messaged: newUser.messaged, 
-				followed: newUser.followed,
-				liked: newUser.liked,
-				posted: newUser.posted,
-			});
-			dispatch({
-				type: actionTypes.ADD_USER,
-				users: [...users, newUser],
-			});
+			var olduser = db.collection("users").doc(user.email);
+			return olduser.get().then((doc) => {
+				if (doc.exists) {
+					return;
+				} else {
+					var newUser = { 
+						name: user.displayName,
+						email: user.email,
+						messaged: [], 
+						following: [],
+						followers: [],
+						liked: [],
+						posted: [],
+						profilePicture: "https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png",
+					};
+					db.collection("users").doc(user.email).set({
+						name: newUser.name,
+						email: newUser.email,
+						messaged: newUser.messaged, 
+						following: newUser.following,
+						followers: newUser.followers,
+						liked: newUser.liked,
+						posted: newUser.posted,
+						profilePicture: newUser.profilePicture,
+					});
+					dispatch({
+						type: actionTypes.ADD_USER,
+						users: [...users, newUser],
+					});
+				}
+			}) 
 		}
 
 		fetchPosts();

@@ -170,9 +170,7 @@ function MyPosts() {
 						<div className="profile">
 							<div className="pic__name">
 								<Popup trigger={
-									<button className="profile__picture__button">
-										<img className="profile__pic" src={ current.profilePicture } />
-									</button>
+									<img className="profile__pic" src={ current.profilePicture } />
 								} position="bottom center" >
 									<div className="comment__form">
 										<input className="comment__value"
