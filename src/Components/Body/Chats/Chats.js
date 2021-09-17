@@ -28,15 +28,21 @@ function Chats() {
 		} else {
 			key = current.email + " " + user.email;
 		}	
-		db.collection('chats').doc(key).get()
-			.then((doc) => {
-				if (doc.exists && doc.data() !== {}) {
-					doc.data().messages.map((message) => {
-						temp.push(message);
-					})
-					setMessages(temp);
-				}
-			})
+		db.collection('chats').doc(key).onSnapshot(snapshot => {
+			if (snapshot.exists) {
+				setMessages(snapshot.data().messages);
+			}
+		});
+
+		// db.collection('chats').doc(key).onSnapshot()
+		// 	.then((doc) => {
+		// 		if (doc.exists && doc.data() !== {}) {
+		// 			doc.data().messages.map((message) => {
+		// 				temp.push(message);
+		// 			})
+		// 			setMessages(temp);
+		// 		}
+		// 	})
 	}, [current])
 
 	const sendMessage = (e) => {
