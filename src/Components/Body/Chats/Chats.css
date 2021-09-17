@@ -1,0 +1,37 @@
+.chats {
+	display: flex;
+	flex-direction: row;
+}
+
+.chatbar {
+	display: flex;
+	flex-direction: column;
+}
+
+.chatbar__item {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	border: 1px solid #bababa
+}
+
+.user__dp {
+	height: 80px;
+	width: 80px;
+	border-radius: 50px;
+	margin: 8px;
+	padding: 4px;
+}
+
+.user__name {
+	font-weight: 600;
+	margin: 8px;
+	margin-top: auto;
+	margin-bottom: auto;
+	padding: 4px;
+	margin-right: 32px;
+}
+
+.message__send {
+	text-align: right;
+}

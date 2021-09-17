@@ -7,6 +7,7 @@ import { actionTypes } from '../../reducer'
 import db from '../../Firebase/firebase'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import MyPosts from './MyPosts/MyPosts'
+import Chats from './Chats/Chats'
 
 function Body() {
 	const [{ user }] = useStateValue();
@@ -75,6 +76,7 @@ function Body() {
 				<Switch>              
 					<Route exact path="/" component={ Posts } />
   				<Route exact path={`/${ user.email }`} component={ MyPosts } />
+					<Route exact path={`/${ user.email }/chats`} component={ Chats } />
 					<Route path="/" component={ MyPosts } />
    	  	</Switch>
 			</BrowserRouter>

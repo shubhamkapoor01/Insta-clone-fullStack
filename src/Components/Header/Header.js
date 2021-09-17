@@ -106,8 +106,11 @@ function Header() {
 				<a className="header__home" href=".">
 					Home
 				</a>
+				<a className="header__chatRoom" href={`/${user.email}/chats`}>
+					MyChats
+				</a>
 				<a className="header__myProfile" href={`/${user.email}`}>
-					My Profile
+					MyProfile
 				</a>	
 			</div>
 		</div>

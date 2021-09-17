@@ -27,16 +27,24 @@
 .header__home {
 	color: black;
 	text-decoration: none;
-	padding: 8px;
-	margin: 8px;
+	padding: 4px;
+	margin: 4px;
 	font-weight: 600;
+}
+
+.header__chatRoom {
+	color: black;
+	text-decoration: none;
+	padding: 4px;
+	margin: 4px;
+	font-weight: 600;	
 }
 
 .header__myProfile {
 	color: black;
 	text-decoration: none;
-	padding: 8px;
-	margin: 8px;
+	padding: 4px;
+	margin: 4px;
 	font-weight: 600;
 }
 
