@@ -8,11 +8,82 @@
 	flex-direction: column;
 }
 
+.chatbox {
+	margin: 8px;
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+}
+
+.chatbox__header {
+	padding: 8px;
+	display: flex;
+	flex-direction: row;
+	border-top-right-radius: 16px;
+	border-top-left-radius: 16px;
+	border: 1px solid #bababa;
+}
+
+.chatbox__body {
+	padding: 8px;
+	border: 1px solid #bababa;
+}
+
+.chatbox__footer {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #bababa;
+	border-bottom-right-radius: 16px;
+	border-bottom-left-radius: 16px;
+}
+
+.chatbox__footer__input {
+	padding: 8px;
+	outline: none;
+	text-decoration: none;
+	border: none;
+	border-bottom-left-radius: 16px;
+}
+
+.chatbox__footer__send {
+	padding: 4px;
+	color: white;
+	background-color: black;
+	border-bottom-right-radius: 16px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
 .chatbar__item {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
 	border: 1px solid #bababa
+}
+
+.message__recieved {
+	margin: 4px;
+	padding: 8px;
+	border: 1px solid #bababa;
+	width: fit-content;
+	border-radius: 12px;
+	background-color: rgb(168, 255, 110);
+}
+
+.message__send__div {
+	margin-left: auto;
+	margin-right: 0;
+	width: fit-content;
+}
+
+.message__send {
+	text-align: right;
+	margin: 4px;
+	padding: 8px;
+	border: 1px solid #bababa;
+	border-radius: 12px;
+	color: white;
+	background-color: #b433f0;
 }
 
 .user__dp {
@@ -30,8 +101,4 @@
 	margin-bottom: auto;
 	padding: 4px;
 	margin-right: 32px;
-}
-
-.message__send {
-	text-align: right;
 }

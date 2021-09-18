@@ -86,8 +86,10 @@ function Chats() {
 					{ messages.map((message) => {
 						return (
 							message.sender === user.email ? (
-								<div className="message__send">
-									{ message.value }
+								<div className="message__send__div">
+									<div className="message__send">
+										{ message.value }
+									</div>
 								</div>
 							) : (
 								<div className="message__recieved">
